@@ -154,7 +154,7 @@ function Dashbord() {
             })
             if(res.data) {
                 toast.success("Approve successful");
-                window.location.reload();
+                window.location.href = '/dashboard';
             }
         } catch (error) {
             toast.error("Error approve pending events")

@@ -59,7 +59,7 @@ const EventDetails = () => {
             const res = await axios.delete(`https://event-managment-56fc.onrender.com/api/events/${id}`)
             if(res.status === 200) {
                 toast.success("successfull to delete")
-                navigate("")
+                navigate("/dashboard")
             }
         } catch (error) {
             toast.error("Error to deleting event")

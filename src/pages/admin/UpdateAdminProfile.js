@@ -11,7 +11,7 @@ function UpdateAdminProfile() {
     const [firstName, setFirstName] = useState("");
     const [lastname, setLastname] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
-    const [ auth ] = useAuth();
+    const [auth] = useAuth();
     const navigate = useNavigate();
 
     // Get token from auth context
@@ -115,7 +115,8 @@ function UpdateAdminProfile() {
                         </div>
                     </div>
                 </form>
-            </div>        </div>
+            </div>        
+        </div>
     );
 }
 
