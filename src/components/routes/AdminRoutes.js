@@ -24,8 +24,8 @@ function AdminRoutes() {
                 setOk(false)
             }
         }
-        if(auth?.token) authCheck()
-    }, [auth?.token])
+        if(token) authCheck()
+    }, [token])
 
     return ok ? <Outlet /> : <Loading />
 }
