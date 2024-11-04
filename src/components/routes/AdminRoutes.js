@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Navigate, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import axios from "axios";
 import Loading from "./Loading";
 
 
 function AdminRoutes() {
-    const [auth, setAuth] = useAuth();
+    const [auth] = useAuth();
     const [ok, setOk] = useState(false)
 
     const token = auth?.token

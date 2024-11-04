@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingGIF from "../../asset/loading.gif"
 
 function Loading() {
     const [count, setCount] = useState(3);
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
         const inrerval = setInterval(() => {
