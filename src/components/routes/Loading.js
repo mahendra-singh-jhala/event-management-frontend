@@ -14,7 +14,7 @@ function Loading() {
         count === 0 && navigate("/login")
 
         return () => clearInterval(inrerval)
-    }, [count])
+    }, [count, navigate])
 
     return (
         <div>
