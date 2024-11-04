@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Navigate, Outlet } from "react-router-dom"
 import axios from "axios";
+import Loading from "./Loading";
 
 function PrivateRoutes() {
-    const [auth, setAuth] = useAuth
+    const [auth, setAuth] = useAuth()
     const [ok, setOk] = useState(false)
 
     const token = auth?.token
@@ -22,10 +23,10 @@ function PrivateRoutes() {
                 setOk(false)
             }
         }
-        if(auth?.token) authCheck()
-    }, [auth?.token])
+        if(token) authCheck()
+    }, [token])
 
-    return ok ? <Outlet /> : <Navigate to="/login" />
+    return ok ? <Outlet /> : <Loading />
 }
 
 export default PrivateRoutes

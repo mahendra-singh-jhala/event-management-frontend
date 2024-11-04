@@ -28,7 +28,8 @@ import QueryRepaly from "./pages/user/QueryRepaly";
 import AdminProfile from "./pages/admin/AdminProfile";
 import UpdateAdminProfile from "./pages/admin/UpdateAdminProfile";
 import UpdateEventForm from "./pages/admin/UpdateEventForm";
-import Feedback from "./pages/admin/Feedback";
+import AdminRoutes from "./components/routes/AdminRoutes";
+import PrivateRoutes from "./components/routes/PrivateRoutes";
 
 
 
@@ -52,34 +53,37 @@ function App() {
                     <Route element={<IsAuth />}>
                         <Route path="/reset-password/:token" element={<ResetPassword />} />
                     </Route>
-                    <Route path="/eventForm" element={<EventForm />} />
                     <Route path="/event" element={<EventList />} />
-                    <Route path="/event/:id" element={<EventDetails />} />
-                    <Route path="/createTicket" element={<TicketForm />} />
-                    <Route path="/tickets" element={<TicketList />} />
-                    <Route path="/event/:id/ticket" element={<TicketSelectionPage />} />
-                    <Route path="/payment/:id" element={<Payment />} />
-                    <Route path="/userticket" element={<ConfirmTicket />} />
-                    <Route path="/changepassword" element={<ChangePassword />} />
-                    <Route path="/updateprofile" element={<UpdateProfile />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
-                    <Route path="/feedback" element={<FeedbackForm />} />
-                    <Route path="/query" element={<QueryForm />} />
-                    <Route path="/calendar" element={<Calendar />} />
-                    <Route path="/dashboard" element={<Dashbord />}>
-                        <Route path="event" element={<EventList />} />
-                        <Route path="people" element={<EventList />} />
-                        <Route path="getQuery" element={<QueryRepaly />} />
-                        <Route path="calendar" element={<Calendar />} />
-                        <Route path="adminProfile" element={<AdminProfile />} />
-                        <Route path="tickets" element={<TicketList />} />
+                    <Route element={<PrivateRoutes />} >
+                        <Route path="/eventForm" element={<EventForm />} />
+                        <Route path="/event/:id" element={<EventDetails />} />
+                        <Route path="/createTicket" element={<TicketForm />} />
+                        <Route path="/tickets" element={<TicketList />} />
+                        <Route path="/event/:id/ticket" element={<TicketSelectionPage />} />
+                        <Route path="/payment/:id" element={<Payment />} />
+                        <Route path="/userticket" element={<ConfirmTicket />} />
+                        <Route path="/changepassword" element={<ChangePassword />} />
+                        <Route path="/updateprofile" element={<UpdateProfile />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
+                        <Route path="/feedback" element={<FeedbackForm />} />
+                        <Route path="/query" element={<QueryForm />} />
+                        <Route path="/calendar" element={<Calendar />} />
                     </Route>
-                    <Route path="/updateAdminprofile" element={<UpdateAdminProfile />} />
-                    <Route path="/event/:id/updateForm" element={<UpdateEventForm />} />
-                    <Route path="/getfeedback" element={<Feedback />} />
-                    <Route path="/getQuery" element={<QueryRepaly />} />
-                    <Route path="/adminProfile" element={<AdminProfile />} />
+                    <Route element={<AdminRoutes />}>
+                        <Route path="/dashboard" element={<Dashbord />}>
+                            <Route path="event" element={<EventList />} />
+                            <Route path="people" element={<EventList />} />
+                            <Route path="getQuery" element={<QueryRepaly />} />
+                            <Route path="calendar" element={<Calendar />} />
+                            <Route path="adminProfile" element={<AdminProfile />} />
+                            <Route path="tickets" element={<TicketList />} />
+                        </Route>
+                        <Route path="/updateAdminprofile" element={<UpdateAdminProfile />} />
+                        <Route path="/event/:id/updateForm" element={<UpdateEventForm />} />
+                        <Route path="/getQuery" element={<QueryRepaly />} />
+                        <Route path="/adminProfile" element={<AdminProfile />} />
+                    </Route>
                 </Routes>
             </main>
         </Router>

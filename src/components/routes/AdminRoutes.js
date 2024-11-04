@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Navigate, Outlet } from "react-router-dom"
 import axios from "axios";
+import Loading from "./Loading";
 
 
 function AdminRoutes() {
@@ -26,7 +27,7 @@ function AdminRoutes() {
         if(auth?.token) authCheck()
     }, [auth?.token])
 
-    return ok ? <Outlet /> : <Navigate to="/login" />
+    return ok ? <Outlet /> : <Loading />
 }
 
 export default AdminRoutes

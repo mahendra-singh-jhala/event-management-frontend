@@ -15,7 +15,6 @@ const Navbar = () => {
         navigate("/login")
     }
 
-
     // Function to handle logout
     const handleLogout = () => {
         setAuth({
@@ -28,7 +27,6 @@ const Navbar = () => {
         toast.success("Logout Successfully");
         navigate("/login")
     }
-
 
     // Function to toggle menu 
     const toggleMenu = () => {
