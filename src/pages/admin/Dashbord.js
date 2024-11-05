@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, } from 'recharts';
@@ -14,6 +14,7 @@ function Dashbord() {
     const [totalsoldTickets, setTotalsoldTickets] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [pendingEvent, setpendingEvent] = useState([]);
+    const navigate = useNavigate();
 
 
     // Check which page is currently active based on the path
@@ -154,6 +155,7 @@ function Dashbord() {
             })
             if(res.data) {
                 toast.success("Approve successful");
+                navigate(`/event/${eventId}`)
             }
         } catch (error) {
             toast.error("Error approve pending events")

@@ -62,10 +62,10 @@ function App() {
                         <Route path="/event/:id/ticket" element={<TicketSelectionPage />} />
                         <Route path="/payment/:id" element={<Payment />} />
                         <Route path="/userticket" element={<ConfirmTicket />} />
+                        <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
                         <Route path="/changepassword" element={<ChangePassword />} />
                         <Route path="/updateprofile" element={<UpdateProfile />} />
                         <Route path="/profile" element={<Profile />} />
-                        <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
                         <Route path="/feedback" element={<FeedbackForm />} />
                         <Route path="/query" element={<QueryForm />} />
                         <Route path="/calendar" element={<Calendar />} />

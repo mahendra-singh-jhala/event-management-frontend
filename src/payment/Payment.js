@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../components/context/AuthContext';
+import toast from 'react-hot-toast';
 
 const PaymentPage = () => {
     const location = useLocation();
@@ -13,7 +14,6 @@ const PaymentPage = () => {
     const token = auth?.token
 
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('');
     const [quantity, setQuantity] = useState(1);
 
 
@@ -74,10 +74,10 @@ const PaymentPage = () => {
                     });
 
                     if (verifyResponse.data.success) {
-                        setMessage('Payment successful! Your ticket has been booked.');
+                        toast.success('Payment successful! Your ticket has been booked.');
                         setTimeout(() => navigate(`/userticket`), 3000);
                     } else {
-                        setMessage('Payment verification failed. Please try again.');
+                        toast.error('Payment verification failed. Please try again.');
                     }
                 },
                 theme: {
@@ -116,7 +116,6 @@ const PaymentPage = () => {
                 >
                     {loading ? 'Processing...' : 'Pay Now'}
                 </button>
-                {message && <p className="mt-4 text-center">{message}</p>}
             </div>
         </div>
     );
