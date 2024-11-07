@@ -73,6 +73,7 @@ function Profile() {
                     <div className="md:col-span-2">
                         <input 
                             type="text" 
+                            placeholder="Username"
                             value={user.username} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -80,7 +81,8 @@ function Profile() {
                     </div>
                     <div>
                         <input 
-                            type="text" 
+                            type="text"
+                            placeholder="First Name"
                             value={user.firstName} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -88,7 +90,8 @@ function Profile() {
                     </div>
                     <div>
                         <input 
-                            type="text" 
+                            type="text"
+                            placeholder="Last Name"
                             value={user.lastname} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -97,6 +100,7 @@ function Profile() {
                     <div className="md:col-span-2">
                         <input 
                             type="email" 
+                            placeholder="Email"
                             value={user.email} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -104,7 +108,8 @@ function Profile() {
                     </div>
                     <div className="md:col-span-2">
                         <input 
-                            type="text" 
+                            type="number" 
+                            placeholder="Phone Number"
                             value={user.contactnumber} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -113,6 +118,7 @@ function Profile() {
                     <div className="md:col-span-2">
                         <input 
                             type="text" 
+                            placeholder="Your Address"
                             value={user.address} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -121,6 +127,7 @@ function Profile() {
                     <div>
                         <input 
                             type="text" 
+                            placeholder="City"
                             value={user.city} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
@@ -129,6 +136,7 @@ function Profile() {
                     <div>
                         <input 
                             type="text" 
+                            placeholder="State"
                             value={user.state} 
                             className="w-full mt-1 p-2 border rounded-lg" 
                             readOnly 
