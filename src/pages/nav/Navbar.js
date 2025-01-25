@@ -84,7 +84,7 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div className="flex flex-wrap items-center justify-between p-3 mx-5">
-                        <Link to="/home" className="w-10 flex items-center ms-2">
+                        <Link to="/dashboard" className="w-10 flex items-center ms-2">
                             <img src={Image} alt="logo" />
                             <h1 className="text-xl font-bold font-serif text-fuchsia-600">EVENT</h1>
                         </Link>

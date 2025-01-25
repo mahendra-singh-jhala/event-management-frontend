@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const TicketForm = () => {
     const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const TicketForm = () => {
     const [events, setEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState('');
     const [selectedEventTitle, setSelectedEventTitle] = useState('');
-
+    const navigate = useNavigate()
 
     // useEffect to fetch event
     useEffect(() => {
@@ -80,6 +81,7 @@ const TicketForm = () => {
             const res = await axios.post("https://event-managment-56fc.onrender.com/api/tickets/create-ticket", ticketData);
             if(res.data) {
                 toast.success("Ticket Created successfully ");
+                navigate("/dashboard/tickets")
             }
             // Clear form after submission
             setSelectedEvent('');

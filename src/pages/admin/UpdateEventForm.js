@@ -21,7 +21,7 @@ const UpdateEventForm = () => {
         const fetchEvent = async () => {
             try {
                 const res = await axios.get(`https://event-managment-56fc.onrender.com/api/events/${id}`);
-                setEventData(res.data);
+                setEventData(res.data)
             } catch (error) {
                 toast.error("Error to fetching event");
             }
