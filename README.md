@@ -6,50 +6,52 @@ Event Management is a full-featured web platform that allows users to create eve
 
 ## Features
 
-Event Creation: Users can create and publish events with details like name, description, venue, date, and time.
+**Event Creation**: Users can create and publish events with details like name, description, venue, date, and time.
 
-Ticket Management: Set ticket prices, manage availability, and monitor registrations.
+**Ticket Management**: Set ticket prices, manage availability, and monitor registrations.
 
-User Authentication: Secure login and registration using JWT (or your preferred method).
+**User Authentication**: Secure login and registration using JWT (or your preferred method).
 
-Admin Controls: Admins can approve, reject, or update events before they go live.
+**Admin Controls**: Admins can approve, reject, or update events before they go live.
 
-Payment Integration: Integrated with Razorpay for secure and smooth payment processing.
+**Payment Integratio**n: Integrated with Razorpay for secure and smooth payment processing.
 
-Email Notifications: Users receive confirmation emails and updates via NodeMailer.
+**Email Notifications**: Users receive confirmation emails and updates via NodeMailer.
+
+
 
 
 ## Tech Stack
 
-Backend: Node.js, Express.js
+**Backend**: Node.js, Express.js
 
-Frontend: React
+**Frontend**: React
 
-Database: MongoDB 
+**Database**: MongoDB 
 
-Payment Gateway: Razorpay
+**Payment Gateway**: Razorpay
 
-Email Service: NodeMailer
+**Email Service**: NodeMailer
 
-Authentication: JWT 
+**Authentication**: JWT 
 
 
 
 ## Installation
 
-1. Clone the repository
+1. **Clone the repository**
 
 ```bash
  git clone https://github.com/mahendra-singh-jhala/event-management-frontend
 ```
 
-2. Install dependencies
+2. **Install dependencies**
 
 ```bash
  npm install
 ```
 
-3 Run the backend Server
+3 **Run the forntend**
 ```bash
  npm start
 ```
