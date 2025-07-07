@@ -32,7 +32,6 @@ import AdminRoutes from "./components/routes/AdminRoutes";
 import PrivateRoutes from "./components/routes/PrivateRoutes";
 
 
-
 function App() {
 
     return (

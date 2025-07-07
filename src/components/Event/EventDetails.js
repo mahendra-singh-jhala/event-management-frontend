@@ -27,7 +27,7 @@ const EventDetails = () => {
     // useEffect to fetch event details
     useEffect(() => {
         const fetchEvent = async () => {
-
+            
             try {
                 const res = await axios.get(`https://event-managment-56fc.onrender.com/api/events/${id}`);
                 setEvent(res.data);
@@ -52,7 +52,7 @@ const EventDetails = () => {
         return new Date(`1970-01-01T${timeString}`).toLocaleTimeString(undefined, options);
     };
 
-
+    
     // Function to handle event deletion
     const deleteEventHandler = async () => {
         try {
