@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../components/context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../asset/logo.png'

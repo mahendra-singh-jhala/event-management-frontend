@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 
 function DeleteTicket() {

@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { useAuth } from "../../components/context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 function UpdateProfile() {
     const [username, setUsername] = useState("");

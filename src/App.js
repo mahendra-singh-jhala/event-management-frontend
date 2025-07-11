@@ -28,8 +28,8 @@ import QueryRepaly from "./pages/user/QueryRepaly";
 import AdminProfile from "./pages/admin/AdminProfile";
 import UpdateAdminProfile from "./pages/admin/UpdateAdminProfile";
 import UpdateEventForm from "./pages/admin/UpdateEventForm";
-import AdminRoutes from "./components/routes/AdminRoutes";
-import PrivateRoutes from "./components/routes/PrivateRoutes";
+import AdminRoutes from "./routes/AdminRoutes";
+import PrivateRoutes from "./routes/ProtectedRoute";
 
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
                         <Route path="/reset-password/:token" element={<ResetPassword />} />
                     </Route>
                     <Route path="/event" element={<EventList />} />
-                    <Route element={<PrivateRoutes />} >
+                    {/* <Route element={<PrivateRoutes />} >
                         <Route path="/eventForm" element={<EventForm />} />
                         <Route path="/event/:id" element={<EventDetails />} />
                         <Route path="/createTicket" element={<TicketForm />} />
@@ -70,7 +70,7 @@ function App() {
                         <Route path="/calendar" element={<Calendar />} />
                     </Route>
                     <Route element={<AdminRoutes />}>
-                        <Route path="/dashboard" element={<Dashbord />}>
+                        <Route path="/adminDashboard" element={<Dashbord />}>
                             <Route path="event" element={<EventList />} />
                             <Route path="people" element={<EventList />} />
                             <Route path="getQuery" element={<QueryRepaly />} />
@@ -82,7 +82,7 @@ function App() {
                         <Route path="/event/:id/updateForm" element={<UpdateEventForm />} />
                         <Route path="/getQuery" element={<QueryRepaly />} />
                         <Route path="/adminProfile" element={<AdminProfile />} />
-                    </Route>
+                    </Route> */}
                 </Routes>
             </main>
         </Router>

@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../components/context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 function Calendar() {
     const [events, setEvents] = useState([]);

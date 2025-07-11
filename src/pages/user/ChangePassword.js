@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { FaLock, FaSyncAlt } from "react-icons/fa";
-import { useAuth } from "../../components/context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 
 function ChangePassword() {
