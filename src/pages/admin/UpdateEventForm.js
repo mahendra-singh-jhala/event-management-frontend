@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 const UpdateEventForm = () => {
     const { id } = useParams();
@@ -20,7 +20,7 @@ const UpdateEventForm = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const res = await axios.get(`https://event-managment-56fc.onrender.com/api/events/${id}`);
+                const res = await api.get(`/api/events/${id}`);
                 setEventData(res.data)
             } catch (error) {
                 toast.error("Error to fetching event");
@@ -41,7 +41,7 @@ const UpdateEventForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put(`https://event-managment-56fc.onrender.com/api/events/${id}`, eventData);
+            const res = await api.put(`/api/events/${id}`, eventData);
             if (res.status === 200) {
                 toast.success("Update successful");
                 navigate(`/event/${id}`); 

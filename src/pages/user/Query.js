@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 function QueryForm() {
     const [queryType, setqueryType] = useState("");
@@ -19,7 +19,7 @@ function QueryForm() {
         e.preventDefault();
         const user = { queryType, description, firstname, lastname, email }
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/query", user, {
+            const res = await api.post("/api/query", user, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

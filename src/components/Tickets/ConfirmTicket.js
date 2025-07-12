@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 const ConfirmTicket = () => {
     const [tickets, setTickets] = useState([]);
@@ -18,7 +18,7 @@ const ConfirmTicket = () => {
         const fetchTickets = async () => {
             try {
 
-                const res = await axios.get('https://event-managment-56fc.onrender.com/api/tickets/userTicket', {
+                const res = await api.get('/api/tickets/userTicket', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

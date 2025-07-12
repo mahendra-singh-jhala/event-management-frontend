@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5";
 import toast from "react-hot-toast";
-import axios from "axios"
+import api from "../../api/API";
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState(""); 
@@ -22,7 +22,7 @@ const ForgetPassword = () => {
         const user = { email };
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/auth/forget-password", user, {
+            const res = await api.post("/api/auth/forget-password", user, {
                 headers: {
                     "Content-type": "application/json",
                 }

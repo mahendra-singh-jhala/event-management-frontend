@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { FaLock, FaSyncAlt } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
+import api from '../../api/API';
 
 
 function ChangePassword() {
@@ -20,7 +20,7 @@ function ChangePassword() {
         const user = { oldPassword, newPassword, confirmPassword }
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/user/changepassword", user, {
+            const res = await api.post("/api/user/changepassword", user, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

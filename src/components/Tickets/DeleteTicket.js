@@ -1,8 +1,8 @@
-import axios from "axios"
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
+import api from "../../api/API";
 
 function DeleteTicket() {
     const { ticketId } = useParams();
@@ -20,7 +20,7 @@ function DeleteTicket() {
         e.preventDefault(); 
         const user = { email, paymentID }
         try {
-            const res = await axios.delete(`https://event-managment-56fc.onrender.com/api/tickets/cancelTicket/${ticketId}`, {
+            const res = await api.delete(`/api/tickets/cancelTicket/${ticketId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
 

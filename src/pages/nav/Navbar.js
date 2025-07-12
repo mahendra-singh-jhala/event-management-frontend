@@ -6,7 +6,7 @@ import Image from '../../asset/logo.png'
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
-    const [auth, setAuth] = useAuth()
+    const { auth, logout } = useAuth()
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -15,29 +15,15 @@ const Navbar = () => {
         navigate("/login")
     }
 
-    // Function to handle logout
-    const handleLogout = () => {
-        setAuth({
-            ...auth,
-            user: null,
-            token: "",
-            role: ""
-        })
-        localStorage.removeItem("auth")
-        toast.success("Logout Successfully");
-        navigate("/login")
-    }
-
     // Function to toggle menu 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
-
     return (
         <nav className="bg-white border-b">
             {auth?.user ? (
-                auth.user.role === 0 ? (
+                auth.user.role === "User" ? (
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
                         <Link to="/" className="w-10 flex items-center ms-2">
                             <img src={Image} alt='logo' />
@@ -90,7 +76,7 @@ const Navbar = () => {
                         </Link>
 
                         <div className="me-2">
-                            <button onClick={handleLogout} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-3xl text-sm px-5 py-2 text-center outline-none"> Logout </button>
+                            <button onClick={logout} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-3xl text-sm px-5 py-2 text-center outline-none"> Logout </button>
                         </div>
                     </div>
                 )

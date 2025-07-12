@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaTag } from 'react-icons/fa';
 import { GiTicket } from 'react-icons/gi';
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 const EventDetails = () => {
     const { id } = useParams();
@@ -29,7 +29,7 @@ const EventDetails = () => {
         const fetchEvent = async () => {
             
             try {
-                const res = await axios.get(`https://event-managment-56fc.onrender.com/api/events/${id}`);
+                const res = await api.get(`/api/events/${id}`);
                 setEvent(res.data);
             } catch (error) {
                 console.error('Error fetching event', error);
@@ -56,7 +56,7 @@ const EventDetails = () => {
     // Function to handle event deletion
     const deleteEventHandler = async () => {
         try {
-            const res = await axios.delete(`https://event-managment-56fc.onrender.com/api/events/${id}`)
+            const res = await api.delete(`/api/events/${id}`)
             if(res.status === 200) {
                 toast.success("successfull to delete")
                 navigate("/dashboard")

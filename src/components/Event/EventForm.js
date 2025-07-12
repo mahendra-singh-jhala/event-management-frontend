@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 const EventForm = () => {
     // Initialize state to hold form data
@@ -53,7 +53,7 @@ const EventForm = () => {
         });
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/events", formDataToSubmit, {
+            const res = await api.post("/api/events", formDataToSubmit, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }

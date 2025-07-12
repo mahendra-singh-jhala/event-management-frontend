@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 const LoginForm = () => {
     const [email, setEmail] = useState(""); 
@@ -19,7 +19,7 @@ const LoginForm = () => {
         const user = { email, password };
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/auth/login", user, {
+            const res = await api.post("/api/auth/login", user, {
                 headers: {
                     "Content-type": "application/json",
                 }

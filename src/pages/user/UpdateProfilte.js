@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 function UpdateProfile() {
     const [username, setUsername] = useState("");
@@ -46,7 +46,7 @@ function UpdateProfile() {
         formData.append("profilePicture", profilePicture);
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/user/updateprofile", formData, {
+            const res = await api.post("/api/user/updateprofile", formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',

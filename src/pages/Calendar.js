@@ -1,9 +1,9 @@
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import api from '../api/API';
 
 function Calendar() {
     const [events, setEvents] = useState([]);
@@ -17,7 +17,7 @@ function Calendar() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/events", {
+                const res = await api.get("/api/events", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

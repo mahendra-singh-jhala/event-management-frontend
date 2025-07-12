@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, Navigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
+import api from "../api/API";
 
 const IsAuth = () => {
     const { token } = useParams();
@@ -13,7 +13,7 @@ const IsAuth = () => {
     useEffect(() => {
         const getAccess = async () => {
             try {
-                const res = await axios.post(`https://event-managment-56fc.onrender.com/api/auth/get-access/${token}`, {
+                const res = await api.post(`/api/auth/get-access/${token}`, {
                     headers: {
                         "Content-Type": "application/json",
                     },

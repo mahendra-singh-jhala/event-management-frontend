@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5";
-import axios from "axios"
 import { useParams } from 'react-router-dom';
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 const ResetPassword = () => {
     const { token } = useParams();
@@ -24,7 +24,7 @@ const ResetPassword = () => {
         const user = { password, confirmPassword };
 
         try {
-            const res = await axios.post(`https://event-managment-56fc.onrender.com/api/auth/reset-password/${token}`, user, {
+            const res = await api.post(`/api/auth/reset-password/${token}`, user, {
                 headers: {
                     "Content-type": "application/json",
                 }

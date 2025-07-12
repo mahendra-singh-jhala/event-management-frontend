@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../api/API";
 
 const TicketList = () => {
 	const [tickets, setTickets] = useState([]);
@@ -10,7 +10,7 @@ const TicketList = () => {
 	useEffect(() => {
 		const fetchTickets = async () => {
 			try {
-				const response = await axios.get('https://event-managment-56fc.onrender.com/api/tickets/ticket');
+				const response = await api.get('/api/tickets/ticket');
 				setTickets(response.data);
 			} catch (error) {
 				console.log("Error to fetching ticket", error)

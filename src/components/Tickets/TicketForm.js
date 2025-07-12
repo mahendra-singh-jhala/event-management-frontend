@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import api from "../../api/API";
 
 const TicketForm = () => {
     const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const TicketForm = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/events");
+                const res = await api.get("/api/events");
                 setEvents(res.data);
             } catch (error) {
                 console.error('Error fetching events', error);
@@ -78,7 +78,7 @@ const TicketForm = () => {
         };
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/tickets/create-ticket", ticketData);
+            const res = await api.post("/api/tickets/create-ticket", ticketData);
             if(res.data) {
                 toast.success("Ticket Created successfully ");
                 navigate("/dashboard/tickets")

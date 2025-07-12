@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { FaCrown, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import api from '../../api/API';
 
 const TicketSelectionPage = () => {
     const [tickets, setTickets] = useState([]);
@@ -27,7 +27,7 @@ const TicketSelectionPage = () => {
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-                const response = await axios.get(`https://event-managment-56fc.onrender.com/api/tickets/event/${id}`);
+                const response = await api.get(`/api/tickets/event/${id}`);
                 setTickets(response.data);
             } catch (error) {
                 console.log("Error to fetching ticket", Error)

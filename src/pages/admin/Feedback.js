@@ -1,6 +1,6 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import api from "../../api/API";
 
 function Feedback() {
     const [feedback, setfeedback] = useState([])
@@ -11,7 +11,7 @@ function Feedback() {
     useEffect(() => {
         const fetchfeeback = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/feedback")
+                const res = await api.get("/api/feedback")
                 setfeedback(res.data)
             } catch (error) {
                 console.log("Error to fetch event", error)

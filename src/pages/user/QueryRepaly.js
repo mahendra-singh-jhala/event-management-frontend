@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 function QueryRepaly() {
     const [queries, setQueries] = useState([]);
@@ -16,7 +16,7 @@ function QueryRepaly() {
     useEffect(() => {
         const fetchQueries = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/query", {
+                const res = await api.get("/api/query", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -35,7 +35,7 @@ function QueryRepaly() {
         e.preventDefault();
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/query/replay", {
+            const res = await api.post("/api/query/replay", {
                 replay,
                 email: query.email,
                 _id: query._id

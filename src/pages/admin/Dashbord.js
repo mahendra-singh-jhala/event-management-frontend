@@ -1,8 +1,8 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, } from 'recharts';
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 function Dashbord() {
     const location = useLocation();
@@ -30,7 +30,7 @@ function Dashbord() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/events")
+                const res = await api.get("/api/events")
                 setEvents(res.data);
             } catch (error) {
                 console.log("Error to fetching event", error)
@@ -52,7 +52,7 @@ function Dashbord() {
     useEffect(() => {
         const fetchSoldTickets = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/tickets/userAllTickets")
+                const res = await api.get("/api/tickets/userAllTickets")
                 setsoldTickets(res.data)
             } catch (error) {
                 console.log('Error fetching Sold tickets. Please try again later', error);
@@ -80,7 +80,7 @@ function Dashbord() {
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/tickets/ticket")
+                const res = await api.get("/api/tickets/ticket")
                 setTickets(res.data);
             } catch (error) {
                 console.log('Error fetching tickets. Please try again later', error);
@@ -106,7 +106,7 @@ function Dashbord() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/user/getAllprofile")
+                const res = await api.get("/api/user/getAllprofile")
                 setUsers(res.data.user)
             } catch (error) {
                 console.log("Error to fetching user", error)
@@ -137,7 +137,7 @@ function Dashbord() {
     useEffect(() => {
         const fetchPendingEvent = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/events/pending")
+                const res = await api.get("/api/events/pending")
                 setpendingEvent(res.data);
             } catch (error) {
                 console.error('Error fetching pending events', error);
@@ -150,7 +150,7 @@ function Dashbord() {
     // useEffect handle event approval or rejection
     const handleApprove = async (eventId, isApproved) => {
         try {
-            const res = await axios.patch(`https://event-managment-56fc.onrender.com/api/events/${eventId}/approve`, {
+            const res = await api.patch(`/api/events/${eventId}/approve`, {
                 status: isApproved ? "approved" : "rejected"
             })
             if(res.data) {

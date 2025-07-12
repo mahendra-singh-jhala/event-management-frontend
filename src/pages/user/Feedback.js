@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 function FeedbackForm() {
     const [feedbackType, setFeedbackType] = useState("");
@@ -20,7 +20,7 @@ function FeedbackForm() {
         const user = { feedbackType, description, firstname, lastname, email };
 
         try {
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/feedback", user, {
+            const res = await api.post("/api/feedback", user, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

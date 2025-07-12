@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import api from "../../api/API";
 
 function Profile() {
     const [user, setUser] = useState({
@@ -35,7 +35,7 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await axios.get("https://event-managment-56fc.onrender.com/api/user/getprofile", {
+                const res = await api.get("/api/user/getprofile", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

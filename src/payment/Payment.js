@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import api from '../api/API';
 
 const PaymentPage = () => {
     const location = useLocation();
@@ -36,7 +36,7 @@ const PaymentPage = () => {
     const handlePayment = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.post('https://event-managment-56fc.onrender.com/api/payments/payment', {
+            const { data } = await api.post('/api/payments/payment', {
                 amount: totalPrice * 100,
                 currency: 'INR',
                 price,
@@ -58,7 +58,7 @@ const PaymentPage = () => {
                 order_id: data.id,
                 handler: async (response) => {
                     // Verify the payment
-                    const verifyResponse = await axios.post('https://event-managment-56fc.onrender.com/api/payments/paymentVerify', {
+                    const verifyResponse = await api.post('/api/payments/paymentVerify', {
                         paymentId: response.razorpay_payment_id,
                         orderId: data.id,
                         ticketType,

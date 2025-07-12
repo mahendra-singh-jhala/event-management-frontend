@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5";
 import toast from "react-hot-toast";
+import api from "../../api/API";
 
 const RegisterForm = () => {
 
@@ -26,7 +26,7 @@ const RegisterForm = () => {
         
         try {
             setLoading(true)
-            const res = await axios.post("https://event-managment-56fc.onrender.com/api/auth/register", user, {
+            const res = await api.post("/api/auth/register", user, {
                 headers: {
                     "Content-type": "application/json",
                 }
