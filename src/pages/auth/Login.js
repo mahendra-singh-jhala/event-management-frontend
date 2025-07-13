@@ -8,43 +8,23 @@ const LoginForm = () => {
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [loading, setLoading] = useState(false);
-    const [auth, setAuth] = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
     
     // function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); 
-        
         const user = { email, password };
-
         try {
-            const res = await api.post("/api/auth/login", user, {
-                headers: {
-                    "Content-type": "application/json",
-                }
-            });
-
+            const res = await api.post("/api/auth/login", user);
             const data = res.data;
-
             if (res.status === 200) {
                 toast.success(data.message || "Login successful");
-                setAuth({
-                    ...auth,
-                    user: data.user,
-                    token: data.token,
-                    role: data.user.role
-                });
-                localStorage.setItem("auth", JSON.stringify(res.data))
-                if (data.user.role === 1) {
-                    navigate("/dashboard");
-                } else {
-                    navigate("/home"); 
-                }
+                login(data)
                 setEmail("");
                 setPassword("");
             }
-
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.error || error.response.data.message || "An error occurred");
@@ -55,7 +35,6 @@ const LoginForm = () => {
             setLoading(false); 
         }
     }
-
 
     return (
         <div className="w-full h-screen flex items-center justify-center bg-gradient-to-l from-indigo-400 via-purple-800 to-pink-500">

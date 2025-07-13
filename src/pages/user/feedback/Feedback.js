@@ -1,7 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 function FeedbackForm() {
     const [feedbackType, setFeedbackType] = useState("");
@@ -9,22 +8,13 @@ function FeedbackForm() {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
-    const [auth] = useAuth();
     
-    // Extract token from auth object
-    const token = auth?.token
-
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = { feedbackType, description, firstname, lastname, email };
-
         try {
-            const res = await api.post("/api/feedback", user, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            const res = await api.post("/api/feedback", user);
             if(res.data) {
                 toast.success("feedback Send Succsefully")
                 setFeedbackType("")

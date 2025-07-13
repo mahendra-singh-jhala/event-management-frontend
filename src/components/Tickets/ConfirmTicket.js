@@ -1,29 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
 import api from "../../api/API";
 
 const ConfirmTicket = () => {
     const [tickets, setTickets] = useState([]);
-    const [auth] = useAuth();
     const navigate = useNavigate();
-    
-    // Extract token from auth context
-    const token = auth?.token
-
 
     // useEffect hook to fetch tickets
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-
-                const res = await api.get('/api/tickets/userTicket', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
+                const res = await api.get('/api/tickets/userTicket');
                 if (res.data) {
                     setTickets(res.data);
                 }
@@ -33,7 +21,6 @@ const ConfirmTicket = () => {
         };
         fetchTickets();
     }, [token]);
-
 
     // Use navigate to go to the event details page
     const handleViewEvent = (eventId) => {

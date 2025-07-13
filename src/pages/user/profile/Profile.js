@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 function Profile() {
     const [user, setUser] = useState({
@@ -15,11 +14,7 @@ function Profile() {
         state: '',
         profilePicture: ''
     });
-    const [auth] = useAuth();
     const navigate = useNavigate();
-
-    // Extract token from auth object
-    const token = auth?.token;
 
     // Function to navigate to change password page
     const navigateHandler = () => {
@@ -35,11 +30,7 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await api.get("/api/user/getprofile", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const res = await api.get("/api/user/getprofile");
                 setUser(res.data.user);
             } catch (error) {
                 console.error('Error fetching user', error);

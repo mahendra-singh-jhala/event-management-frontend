@@ -27,18 +27,15 @@ const TicketForm = () => {
         fetchEvents();
     }, []);
 
-
     // Handle changes to the selected event
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-
     // function handle changes to the selected event
     const handleEventChange = (e) => {
         const eventId = e.target.value;
         setSelectedEvent(eventId);
-
         // Fetch the selected event's price
         const selectedEvent = events.find(event => event._id === eventId);
         if (selectedEvent) {
@@ -66,7 +63,6 @@ const TicketForm = () => {
         }))
     }
 
-
     // function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -89,8 +85,7 @@ const TicketForm = () => {
                 ticketTypes: "",
                 price: "",
                 quantity: "",
-            });
-            
+            }); 
         } catch (error) {
             toast.error("Error creating ticket")
         }

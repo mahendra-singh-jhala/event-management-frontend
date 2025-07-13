@@ -1,30 +1,20 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { FaLock, FaSyncAlt } from "react-icons/fa";
-import { useAuth } from "../../context/AuthContext";
-import api from '../../api/API';
+import api from '../../../api/API';
 
 
 function ChangePassword() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [auth] = useAuth();
-
-    // Get token from auth object
-    const token = auth?.token
-
+    
     // handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = { oldPassword, newPassword, confirmPassword }
-
         try {
-            const res = await api.post("/api/user/changepassword", user, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            })
+            const res = await api.post("/api/user/changepassword", user)
             if (res.status === 200) {
                 toast.success("password successful Changed");
                 setOldPassword("")

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5";
 import { useParams } from 'react-router-dom';
 import toast from "react-hot-toast";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 const ResetPassword = () => {
     const { token } = useParams();
@@ -16,28 +16,18 @@ const ResetPassword = () => {
         navigate("/login")
     }
 
-
     // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const user = { password, confirmPassword };
-
         try {
-            const res = await api.post(`/api/auth/reset-password/${token}`, user, {
-                headers: {
-                    "Content-type": "application/json",
-                }
-            });
-
+            const res = await api.post(`/api/auth/reset-password/${token}`, user);
             const data = res.data;
-            
             if (res.status === 200) {
                 toast.success(data.message || "Paswword Reset successful");
                 setPassword("")
                 setConfirmPassword("")
             }
-
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.error || error.response.data.message || "An error occurred");
@@ -45,8 +35,6 @@ const ResetPassword = () => {
                 toast.error("Pssword Not Reset, failed due to a network error");
             }
         }
-
-
     }
 
     return (

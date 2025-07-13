@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 const UpdateEventForm = () => {
     const { id } = useParams();
@@ -29,13 +29,11 @@ const UpdateEventForm = () => {
         fetchEvent();
     }, [id]);
 
-    
     // Function to handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setEventData({ ...eventData, [name]: value });
     };
-
 
     // Function to handle form submission
     const handleSubmit = async (e) => {

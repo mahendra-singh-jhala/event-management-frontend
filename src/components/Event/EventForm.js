@@ -16,12 +16,10 @@ const EventForm = () => {
         videos: [],
     });
 
-
     // Function to handle text input changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
 
     // Function to handle file input changes
     const handleFileChange = (e) => {
@@ -29,7 +27,6 @@ const EventForm = () => {
         const files = Array.from(e.target.files);
         setFormData({ ...formData, [name]: files });
     };
-
 
     // Function to handle form submission
     const handleSubmit = async (e) => {
@@ -53,11 +50,7 @@ const EventForm = () => {
         });
 
         try {
-            const res = await api.post("/api/events", formDataToSubmit, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
+            const res = await api.post("/api/events", formDataToSubmit);
             if (res.status === 200) {
                 toast.success("Created successfully, wait for admin approval");
                 setFormData({

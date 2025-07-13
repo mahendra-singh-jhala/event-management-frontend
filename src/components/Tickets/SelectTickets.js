@@ -9,19 +9,12 @@ const TicketSelectionPage = () => {
     const { id } = useParams();
     const navigate = useNavigate()
 
-
     // Function to handle ticket selection and navigate to payment page
     const navigateHandler = (ticketType, price) => {
         navigate(`/payment/${id}`, {
-            state: {
-                ticketType,
-                price,
-                eventId: id
-
-            }
+            state: { ticketType, price, eventId: id }
         });
     }
-
 
     // useEffect to fetch tickets when id changes
     useEffect(() => {
@@ -33,10 +26,8 @@ const TicketSelectionPage = () => {
                 console.log("Error to fetching ticket", Error)
             }
         };
-
         fetchTickets();
     }, [id]);
-
 
     // Find VIP and General Admission tickets from the fetched tickets
     const vipTicket = tickets.find(ticket => ticket.ticketTypes === 'VIP');
@@ -46,7 +37,6 @@ const TicketSelectionPage = () => {
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-8">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl font-bold text-white text-center mb-10">Select Your Tickets</h1>
-
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-xl p-6 shadow-xl">
                         <div className="flex items-center mb-4">

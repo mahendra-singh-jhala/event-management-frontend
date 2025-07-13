@@ -8,7 +8,6 @@ const EventList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const eventsPerPage = 6;
 
-
     // useEffect to fetch events 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -29,14 +28,13 @@ const EventList = () => {
         setCurrentPage(1);
     };
 
-
-     // Filter events based on title and location
+    // Filter events based on title and location
     const filteredEvents = events.filter(event =>
         event.title.toLowerCase().includes(search.toLowerCase()) ||
         event.location.toLowerCase().includes(search.toLowerCase())
     );
 
-     // Function to handle page changes
+    // Function to handle page changes
     const handlePagination = (pageNumber) => {
         setCurrentPage(pageNumber)
     };

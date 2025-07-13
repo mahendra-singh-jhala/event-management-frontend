@@ -1,7 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 function QueryForm() {
     const [queryType, setqueryType] = useState("");
@@ -9,21 +8,13 @@ function QueryForm() {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
-    const [auth] = useAuth();
-    
-    // Extract token from auth object
-    const token = auth?.token
 
     // Handler form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = { queryType, description, firstname, lastname, email }
         try {
-            const res = await api.post("/api/query", user, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
+            const res = await api.post("/api/query", user)
             if(res.data) {
                 toast.success("Query send Succseful")
                 setqueryType("")
@@ -36,7 +27,6 @@ function QueryForm() {
             toast.error("Error to send query")
         }
     }
-
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">

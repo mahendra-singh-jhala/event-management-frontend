@@ -10,7 +10,7 @@ import api from "../../api/API";
 const EventDetails = () => {
     const { id } = useParams();
     const [event, setEvent] = useState(null);
-    const [ auth ] = useAuth();
+    const { auth } = useAuth();
     const navigate = useNavigate()
 
     // Use navigate to go to the ticket page
@@ -23,11 +23,9 @@ const EventDetails = () => {
         navigate(`/event/${id}/updateForm`)
     }
 
-
     // useEffect to fetch event details
     useEffect(() => {
         const fetchEvent = async () => {
-            
             try {
                 const res = await api.get(`/api/events/${id}`);
                 setEvent(res.data);
@@ -45,14 +43,12 @@ const EventDetails = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-
     // Function to format time
     const formatTime = (timeString) => {
         const options = { hour: 'numeric', minute: 'numeric', hour12: true };
         return new Date(`1970-01-01T${timeString}`).toLocaleTimeString(undefined, options);
     };
 
-    
     // Function to handle event deletion
     const deleteEventHandler = async () => {
         try {
@@ -129,7 +125,7 @@ const EventDetails = () => {
                                 </div>
                             </div>
 
-                            {auth.user.role === 1 ? (
+                            {auth.user.role === "Admin" ? (
                                 <div className="flex gap-4">
                                     <button onClick={updateEventHandler} className="w-full bg-blue-600 text-white text-xl font-bold py-4 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700 shadow-lg">
                                         Update

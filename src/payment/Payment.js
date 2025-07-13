@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import api from '../api/API';
 
@@ -8,18 +7,11 @@ const PaymentPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { ticketType, price, eventId } = location.state || {};
-    const [auth] = useAuth();
-    
-    // Extract token from auth context
-    const token = auth?.token
-
     const [loading, setLoading] = useState(false);
     const [quantity, setQuantity] = useState(1);
 
-
     // Function to handle quantity changes
     const quantityHandler = (value) => {
-        
         if (value > 0) {
             setQuantity(value);
         } else {
@@ -27,11 +19,9 @@ const PaymentPage = () => {
         }
     };
 
-
     // Calculate total price based on price and quantity
     const totalPrice = price * quantity;
 
-    
     // Function to handle the payment process
     const handlePayment = async () => {
         setLoading(true);
@@ -43,12 +33,7 @@ const PaymentPage = () => {
                 ticketType,
                 eventId,
                 quantity
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
             });
-
             const options = {
                 key: process.env.ROZ_KEY_Id,
                 amount: data.amount,
@@ -72,7 +57,6 @@ const PaymentPage = () => {
                             Authorization: `Bearer ${token}`
                         }
                     });
-
                     if (verifyResponse.data.success) {
                         toast.success('Payment successful! Your ticket has been booked.');
                         setTimeout(() => navigate(`/userticket`), 3000);
@@ -84,7 +68,6 @@ const PaymentPage = () => {
                     color: '#F37254',
                 },
             };
-
             const razorpay = new window.Razorpay(options);
             razorpay.open();
         } catch (error) {

@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem("auth", JSON.stringify(userData))
         setAuth(userData)
         const role = userData.user?.role;
-
         if (role === "Admin") {
             navigate("/adminDashboard");
         } else if (role === "User") {

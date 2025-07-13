@@ -5,7 +5,6 @@ const TicketList = () => {
 	const [tickets, setTickets] = useState([]);
 	const [filterTickets, setFilterTickets] = useState("");
 
-
 	// useEffect to fetch tickets
 	useEffect(() => {
 		const fetchTickets = async () => {

@@ -1,26 +1,16 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 function QueryRepaly() {
     const [queries, setQueries] = useState([]);
     const [replay, setReplay] = useState("");
-    const [auth] = useAuth();
-
-    // Extract token from auth object
-    const token = auth?.token
-
 
     // useEffect to fetch queries 
     useEffect(() => {
         const fetchQueries = async () => {
             try {
-                const res = await api.get("/api/query", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const res = await api.get("/api/query");
                 setQueries(res.data);
             } catch (error) {
                 console.log("Error to fetch queries", error);
@@ -29,21 +19,11 @@ function QueryRepaly() {
         fetchQueries();
     }, [token]);
 
-
     // Handler submitting a reply
     const handleSubmit = async (e, query) => {
         e.preventDefault();
-
         try {
-            const res = await api.post("/api/query/replay", {
-                replay,
-                email: query.email,
-                _id: query._id
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            const res = await api.post("/api/query/replay", { replay, email: query.email, _id: query._id });
             if (res.status === 200) {
                 toast.success("Send reply successful")
                 setReplay("");

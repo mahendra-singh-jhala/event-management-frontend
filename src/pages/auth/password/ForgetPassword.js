@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5";
 import toast from "react-hot-toast";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState(""); 
@@ -13,28 +13,19 @@ const ForgetPassword = () => {
     const navigateHandler = () => {
         navigate("/login")
     }
-
+    
     // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); 
-
         const user = { email };
-
         try {
-            const res = await api.post("/api/auth/forget-password", user, {
-                headers: {
-                    "Content-type": "application/json",
-                }
-            });
-
+            const res = await api.post("/api/auth/forget-password", user);
             const data = res.data;
-            
             if (res.status === 200) {
                 toast.success(data.message || "Link Send successful");
                 setEmail("");
             }
-
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.error || error.response.data.message || "An error occurred");

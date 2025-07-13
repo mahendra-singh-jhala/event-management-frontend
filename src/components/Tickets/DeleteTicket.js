@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import api from "../../api/API";
 
@@ -8,25 +7,14 @@ function DeleteTicket() {
     const { ticketId } = useParams();
     const [email, setEmail] = useState("");
     const [paymentID, setPaymentID] = useState("")
-    const [auth] = useAuth();
     const nevigate = useNavigate();
-
-    // Extract token from auth context
-    const token = auth?.token
-
 
     // function to handle ticket deletion
     const cancelHandler = async (e) => {
         e.preventDefault(); 
         const user = { email, paymentID }
         try {
-            const res = await api.delete(`/api/tickets/cancelTicket/${ticketId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-
-                },
-                data: user
-            })
+            const res = await api.delete(`/api/tickets/cancelTicket/${ticketId}`, { data: user })
             if (res.data) {
                 toast.success("delete successful! Your ticket has Delete in two days.");
                 nevigate("/userticket")

@@ -8,8 +8,6 @@ import TicketList from "./components/Tickets/TicketList";
 import Payment from "./payment/Payment";
 import RegisterForm from "./pages/auth/Register";
 import LoginForm from "./pages/auth/Login";
-import ForgetPassword from "./pages/auth/ForgetPassword";
-import ResetPassword from "./pages/auth/ResetPassword";
 import IsAuth from "./pages/Auth";
 import Navbar from "./pages/nav/Navbar";
 import EventDetails from "./components/Event/EventDetails";
@@ -17,19 +15,21 @@ import Home from "./pages/Home";
 import TicketSelectionPage from "./components/Tickets/SelectTickets";
 import Dashbord from "./pages/admin/Dashbord";
 import ConfirmTicket from "./components/Tickets/ConfirmTicket";
-import Profile from "./pages/user/Profile";
-import ChangePassword from "./pages/user/ChangePassword";
-import UpdateProfile from "./pages/user/UpdateProfilte";
 import DeleteTicket from "./components/Tickets/DeleteTicket";
-import FeedbackForm from "./pages/user/Feedback";
-import QueryForm from "./pages/user/Query";
 import Calendar from "./pages/Calendar";
-import QueryRepaly from "./pages/user/QueryRepaly";
 import AdminProfile from "./pages/admin/AdminProfile";
 import UpdateAdminProfile from "./pages/admin/UpdateAdminProfile";
 import UpdateEventForm from "./pages/admin/UpdateEventForm";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import ForgetPassword from "./pages/auth/password/ForgetPassword";
+import ResetPassword from "./pages/auth/password/ResetPassword";
+import QueryForm from "./pages/user/query/Query";
+import QueryRepaly from "./pages/user/query/QueryRepaly";
+import FeedbackForm from "./pages/user/feedback/Feedback";
+import Profile from "./pages/user/profile/Profile";
+import UpdateProfile from "./pages/user/profile/UpdateProfilte";
+import ChangePassword from "./pages/user/profile/ChangePassword";
 
 
 function App() {
@@ -63,9 +63,9 @@ function App() {
                             <Route path="/payment/:id" element={<Payment />} />
                             <Route path="/userticket" element={<ConfirmTicket />} />
                             <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
-                            <Route path="/changepassword" element={<ChangePassword />} />
-                            <Route path="/updateprofile" element={<UpdateProfile />} />
                             <Route path="/profile" element={<Profile />} />
+                            <Route path="/updateprofile" element={<UpdateProfile />} />
+                            <Route path="/changepassword" element={<ChangePassword />} />
                             <Route path="/feedback" element={<FeedbackForm />} />
                             <Route path="/query" element={<QueryForm />} />
                             <Route path="/calendar" element={<Calendar />} />

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import api from "../../api/API";
+import api from "../../../api/API";
 
 function Feedback() {
     const [feedback, setfeedback] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
-
 
     // useEffect to Fetch feedback data
     useEffect(() => {
@@ -20,18 +19,15 @@ function Feedback() {
         fetchfeeback()
     }, [])
 
-
     // Function to move to the next feedback
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % feedback.length);
     };
 
-
     // Function to move to the previous feedback
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + feedback.length) % feedback.length);
     };
-
 
     return (
         <div className="w-full bg-gradient-to-t from-sky-200 p-10">

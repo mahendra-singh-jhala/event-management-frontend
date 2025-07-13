@@ -16,7 +16,6 @@ function Dashbord() {
     const [pendingEvent, setpendingEvent] = useState([]);
     const navigate = useNavigate();
 
-
     // Check which page is currently active based on the path
     const isEventsPage = location.pathname.includes("event");
     const isMessagePage = location.pathname.includes("getQuery");
@@ -24,7 +23,6 @@ function Dashbord() {
     const isSettingPage = location.pathname.includes("setting");
     const isProfilePage = location.pathname.includes("adminProfile");
     const isTicketPage = location.pathname.includes("tickets");
-
 
     // useEffect to Fetch events 
     useEffect(() => {
@@ -39,14 +37,12 @@ function Dashbord() {
         fetchEvents()
     }, [])
 
-
     // Filter upcoming events based on the current date
     const upcomingEvents = events.filter(event => {
         const eventDate = new Date(event.date);
         const currentDate = new Date();
         return eventDate >= currentDate;
     });
-
 
     // useEffect to Fetch sold tickets
     useEffect(() => {

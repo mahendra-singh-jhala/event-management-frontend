@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import api from "../../api/API";
 
 const RegisterForm = () => {
-
     const [username, setUsername] = useState(""); 
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
@@ -20,17 +19,11 @@ const RegisterForm = () => {
     // function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); 
-
+        setLoading(true);
         const user = { username, email, password };
-        
         try {
             setLoading(true)
-            const res = await api.post("/api/auth/register", user, {
-                headers: {
-                    "Content-type": "application/json",
-                }
-            });
+            const res = await api.post("/api/auth/register", user);
             const data = res.data;
             if (res.status === 200) {
                 toast.success(data.message || "Registration successful");
@@ -38,7 +31,6 @@ const RegisterForm = () => {
                 setEmail("");
                 setPassword("");
             }
-
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.error || error.response.data.message || "An error occurred");
@@ -49,7 +41,6 @@ const RegisterForm = () => {
             setLoading(false); 
         }
     }
-
 
     return (
         <div className="w-full h-screen flex items-center justify-center bg-gradient-to-l from-indigo-400 via-purple-800 to-pink-500">
