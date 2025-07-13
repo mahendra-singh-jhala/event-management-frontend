@@ -18,7 +18,7 @@ function Calendar() {
             }
         };
         fetchEvents();
-    }, [token]);
+    }, []);
 
     // Function to format time
     const formatTime = (timeString) => {

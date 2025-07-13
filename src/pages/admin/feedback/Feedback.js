@@ -5,7 +5,7 @@ import api from "../../../api/API";
 function Feedback() {
     const [feedback, setfeedback] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
-
+    
     // useEffect to Fetch feedback data
     useEffect(() => {
         const fetchfeeback = async () => {

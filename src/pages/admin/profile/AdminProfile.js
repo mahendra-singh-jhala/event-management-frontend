@@ -16,7 +16,7 @@ function AdminProfile() {
     const navigateHandler = () => {
         navigate("/changepassword");
     }
-
+    
     // Function to navigate to update profile page
     const navigateUpdateHandler = () => {
         navigate("/updateAdminprofile");

@@ -30,14 +30,14 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await api.get("/api/user/getprofile");
+                const res = await api.get("/api/user");
                 setUser(res.data.user);
             } catch (error) {
                 console.error('Error fetching user', error);
             }
         }
         fetchProfile();
-    }, [token]);
+    }, []);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-4">
@@ -45,7 +45,7 @@ function Profile() {
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                         <img 
-                            src={`https://event-managment-56fc.onrender.com${user.profilePicture}`} 
+                            src={`http://localhost:5000${user.profilePicture}`} 
                             alt="Profile" 
                             className="w-24 h-24 rounded-full mr-4" 
                         />

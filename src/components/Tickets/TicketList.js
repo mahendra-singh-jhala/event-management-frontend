@@ -9,8 +9,8 @@ const TicketList = () => {
 	useEffect(() => {
 		const fetchTickets = async () => {
 			try {
-				const response = await api.get('/api/tickets/ticket');
-				setTickets(response.data);
+				const res = await api.get('/api/tickets/ticket');
+				setTickets(res.data?.tickets);
 			} catch (error) {
 				console.log("Error to fetching ticket", error)
 			}

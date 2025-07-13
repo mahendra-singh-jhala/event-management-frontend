@@ -28,7 +28,7 @@ const EventDetails = () => {
         const fetchEvent = async () => {
             try {
                 const res = await api.get(`/api/events/${id}`);
-                setEvent(res.data);
+                setEvent(res.data?.events);
             } catch (error) {
                 console.error('Error fetching event', error);
             }

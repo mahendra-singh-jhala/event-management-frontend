@@ -13,14 +13,14 @@ const ConfirmTicket = () => {
             try {
                 const res = await api.get('/api/tickets/userTicket');
                 if (res.data) {
-                    setTickets(res.data);
+                    setTickets(res.data?.ticket);
                 }
             } catch (error) {
                 toast.error("Error to fetch Ticket")
             }
         };
         fetchTickets();
-    }, [token]);
+    }, []);
 
     // Use navigate to go to the event details page
     const handleViewEvent = (eventId) => {
@@ -37,8 +37,7 @@ const ConfirmTicket = () => {
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-8">
             <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6" >
                 <h1 className="text-3xl font-bold mb-4 text-center">Your Tickets</h1>
-                {
-                    tickets.length > 0 ? (
+                { tickets.length > 0 ? (
                         <ul className="space-y-4">
                             {tickets.map((ticket) => (
                                 <li key={ticket._id} className="border border-gray-300 rounded-lg p-4 shadow-md">

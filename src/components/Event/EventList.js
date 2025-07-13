@@ -13,14 +13,13 @@ const EventList = () => {
         const fetchEvents = async () => {
             try {
                 const res = await api.get("/api/events");
-                setEvents(res.data);
+                setEvents(res.data?.events);
             } catch (error) {
                 console.error('Error fetching events', error);
             }
         }
         fetchEvents();
     }, []);
-
 
     // Function to handle search input changes
     const handleSearch = (e) => {
@@ -29,7 +28,7 @@ const EventList = () => {
     };
 
     // Filter events based on title and location
-    const filteredEvents = events.filter(event =>
+    const filteredEvents = events?.filter(event =>
         event.title.toLowerCase().includes(search.toLowerCase()) ||
         event.location.toLowerCase().includes(search.toLowerCase())
     );

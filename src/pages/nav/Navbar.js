@@ -63,7 +63,7 @@ const Navbar = () => {
                                     <Link to="/profile" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Profile </Link>
                                 </li>
                                 <li>
-                                    <Link onClick={handleLogout} to="/login" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Logout </Link>
+                                    <Link onClick={logout} to="/login" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Logout </Link>
                                 </li>
                             </ul>
                         </div>
@@ -80,15 +80,12 @@ const Navbar = () => {
                         </div>
                     </div>
                 )
-
             ) : (
-
                 <div className="flex flex-wrap items-center justify-between p-3 mx-5">
                     <Link to="/home" className="w-10 flex items-center ms-2">
                         <img src={Image} alt="logo" />
                         <h1 className="text-xl font-bold font-serif text-fuchsia-600">EVENT</h1>
                     </Link>
-
                     <div className="me-2">
                         <button onClick={navigateHandler} className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-3xl text-sm px-5 py-2 text-center outline-none"> Login </button>
                     </div>

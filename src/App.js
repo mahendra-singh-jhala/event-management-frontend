@@ -17,9 +17,6 @@ import Dashbord from "./pages/admin/Dashbord";
 import ConfirmTicket from "./components/Tickets/ConfirmTicket";
 import DeleteTicket from "./components/Tickets/DeleteTicket";
 import Calendar from "./pages/Calendar";
-import AdminProfile from "./pages/admin/AdminProfile";
-import UpdateAdminProfile from "./pages/admin/UpdateAdminProfile";
-import UpdateEventForm from "./pages/admin/UpdateEventForm";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import ForgetPassword from "./pages/auth/password/ForgetPassword";
@@ -30,6 +27,9 @@ import FeedbackForm from "./pages/user/feedback/Feedback";
 import Profile from "./pages/user/profile/Profile";
 import UpdateProfile from "./pages/user/profile/UpdateProfilte";
 import ChangePassword from "./pages/user/profile/ChangePassword";
+import UpdateEventForm from "./pages/admin/event/UpdateEventForm";
+import UpdateAdminProfile from "./pages/admin/profile/UpdateAdminProfile";
+import AdminProfile from "./pages/admin/profile/AdminProfile";
 
 
 function App() {
@@ -38,7 +38,6 @@ function App() {
         <Router>
             <AuthProvider>
                 <Toaster position="top-right" />
-
                 <header>
                     <Navbar />
                 </header>
@@ -79,10 +78,10 @@ function App() {
                                 <Route path="adminProfile" element={<AdminProfile />} />
                                 <Route path="tickets" element={<TicketList />} />
                             </Route>
-                            <Route path="/updateAdminprofile" element={<UpdateAdminProfile />} />
                             <Route path="/event/:id/updateForm" element={<UpdateEventForm />} />
-                            <Route path="/getQuery" element={<QueryRepaly />} />
                             <Route path="/adminProfile" element={<AdminProfile />} />
+                            <Route path="/updateAdminprofile" element={<UpdateAdminProfile />} />
+                            <Route path="/getQuery" element={<QueryRepaly />} />
                         </Route>
                     </Routes>
                 </main>

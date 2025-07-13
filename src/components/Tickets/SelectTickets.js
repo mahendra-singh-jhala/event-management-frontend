@@ -20,8 +20,8 @@ const TicketSelectionPage = () => {
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-                const response = await api.get(`/api/tickets/event/${id}`);
-                setTickets(response.data);
+                const res = await api.get(`/api/tickets/event/${id}`);
+                setTickets(res.data?.tickets);
             } catch (error) {
                 console.log("Error to fetching ticket", Error)
             }

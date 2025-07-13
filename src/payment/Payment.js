@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import api from '../api/API';
 
 const PaymentPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { ticketType, price, eventId } = location.state || {};
+    const { auth } = useAuth();
+    const token = auth?.token; // Extract token from auth context
+
     const [loading, setLoading] = useState(false);
     const [quantity, setQuantity] = useState(1);
 
+
     // Function to handle quantity changes
     const quantityHandler = (value) => {
+        
         if (value > 0) {
             setQuantity(value);
         } else {
@@ -19,21 +25,28 @@ const PaymentPage = () => {
         }
     };
 
+
     // Calculate total price based on price and quantity
     const totalPrice = price * quantity;
 
+    
     // Function to handle the payment process
     const handlePayment = async () => {
         setLoading(true);
         try {
-            const { data } = await api.post('/api/payments/payment', {
+            const { data } = await axios.post('http://localhost:5000/api/payments/payment', {
                 amount: totalPrice * 100,
                 currency: 'INR',
                 price,
                 ticketType,
                 eventId,
                 quantity
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
+
             const options = {
                 key: process.env.ROZ_KEY_Id,
                 amount: data.amount,
@@ -43,7 +56,7 @@ const PaymentPage = () => {
                 order_id: data.id,
                 handler: async (response) => {
                     // Verify the payment
-                    const verifyResponse = await api.post('/api/payments/paymentVerify', {
+                    const verifyResponse = await axios.post('http://localhost:5000/api/payments/paymentVerify', {
                         paymentId: response.razorpay_payment_id,
                         orderId: data.id,
                         ticketType,
@@ -57,6 +70,7 @@ const PaymentPage = () => {
                             Authorization: `Bearer ${token}`
                         }
                     });
+
                     if (verifyResponse.data.success) {
                         toast.success('Payment successful! Your ticket has been booked.');
                         setTimeout(() => navigate(`/userticket`), 3000);
@@ -68,6 +82,7 @@ const PaymentPage = () => {
                     color: '#F37254',
                 },
             };
+
             const razorpay = new window.Razorpay(options);
             razorpay.open();
         } catch (error) {

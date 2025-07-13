@@ -1,7 +1,7 @@
 import Main from "../ui/Main";
 import Footer from "../ui/Footer";
 import EventList from "../components/Event/EventList";
-import Feedback from "./admin/Feedback";
+import Feedback from "./admin/feedback/Feedback";
 
 function Home() {
     return (
