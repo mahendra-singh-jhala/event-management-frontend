@@ -19,7 +19,7 @@ const TicketForm = () => {
         const fetchEvents = async () => {
             try {
                 const res = await api.get("/api/events");
-                setEvents(res.data);
+                setEvents(res.data?.events);
             } catch (error) {
                 console.error('Error fetching events', error);
             }

@@ -29,7 +29,7 @@ function Dashbord() {
         const fetchEvents = async () => {
             try {
                 const res = await api.get("/api/events")
-                setEvents(res.data);
+                setEvents(res.data?.events);
             } catch (error) {
                 console.log("Error to fetching event", error)
             }
@@ -49,7 +49,7 @@ function Dashbord() {
         const fetchSoldTickets = async () => {
             try {
                 const res = await api.get("/api/tickets/userAllTickets")
-                setsoldTickets(res.data)
+                setsoldTickets(res.data?.allTicket)
             } catch (error) {
                 console.log('Error fetching Sold tickets. Please try again later', error);
             }
@@ -77,7 +77,7 @@ function Dashbord() {
         const fetchTickets = async () => {
             try {
                 const res = await api.get("/api/tickets/ticket")
-                setTickets(res.data);
+                setTickets(res.data?.tickets);
             } catch (error) {
                 console.log('Error fetching tickets. Please try again later', error);
             }
@@ -103,7 +103,7 @@ function Dashbord() {
         const fetchUser = async () => {
             try {
                 const res = await api.get("/api/user/getAllprofile")
-                setUsers(res.data.user)
+                setUsers(res.data?.user)
             } catch (error) {
                 console.log("Error to fetching user", error)
             }
@@ -134,7 +134,7 @@ function Dashbord() {
         const fetchPendingEvent = async () => {
             try {
                 const res = await api.get("/api/events/pending")
-                setpendingEvent(res.data);
+                setpendingEvent(res.data?.pendingEvents);
             } catch (error) {
                 console.error('Error fetching pending events', error);
             }

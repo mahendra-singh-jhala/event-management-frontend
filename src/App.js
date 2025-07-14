@@ -53,10 +53,9 @@ function App() {
                             <Route path="/reset-password/:token" element={<ResetPassword />} />
                         </Route>
                         <Route path="/event" element={<EventList />} />
+                        <Route path="/eventForm" element={<EventForm />} />
                         <Route element={<ProtectedRoute roles={["User"]} />} >
-                            <Route path="/eventForm" element={<EventForm />} />
                             <Route path="/event/:id" element={<EventDetails />} />
-                            <Route path="/createTicket" element={<TicketForm />} />
                             <Route path="/tickets" element={<TicketList />} />
                             <Route path="/event/:id/ticket" element={<TicketSelectionPage />} />
                             <Route path="/payment/:id" element={<Payment />} />
@@ -78,9 +77,11 @@ function App() {
                                 <Route path="adminProfile" element={<AdminProfile />} />
                                 <Route path="tickets" element={<TicketList />} />
                             </Route>
+                            <Route path="/event/:id" element={<EventDetails />} />
                             <Route path="/event/:id/updateForm" element={<UpdateEventForm />} />
                             <Route path="/adminProfile" element={<AdminProfile />} />
                             <Route path="/updateAdminprofile" element={<UpdateAdminProfile />} />
+                            <Route path="/createTicket" element={<TicketForm />} />
                             <Route path="/getQuery" element={<QueryRepaly />} />
                         </Route>
                     </Routes>

@@ -17,7 +17,7 @@ function QueryRepaly() {
             }
         };
         fetchQueries();
-    }, [token]);
+    }, []);
 
     // Handler submitting a reply
     const handleSubmit = async (e, query) => {
