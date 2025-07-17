@@ -77,7 +77,7 @@ const TicketForm = () => {
             const res = await api.post("/api/tickets/create-ticket", ticketData);
             if(res.data) {
                 toast.success("Ticket Created successfully ");
-                navigate("/dashboard/tickets")
+                navigate("/adminDashboard/tickets")
             }
             // Clear form after submission
             setSelectedEvent('');

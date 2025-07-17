@@ -49,6 +49,7 @@ function App() {
                         <Route path="/register" element={<RegisterForm />} />
                         <Route path="/login" element={<LoginForm />} />
                         <Route path="/forget-password" element={<ForgetPassword />} />
+                        <Route path="/changepassword" element={<ChangePassword />} />
                         <Route element={<IsAuth />}>
                             <Route path="/reset-password/:token" element={<ResetPassword />} />
                         </Route>
@@ -63,7 +64,6 @@ function App() {
                             <Route path="/cancelTicket/:ticketId" element={<DeleteTicket />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/updateprofile" element={<UpdateProfile />} />
-                            <Route path="/changepassword" element={<ChangePassword />} />
                             <Route path="/feedback" element={<FeedbackForm />} />
                             <Route path="/query" element={<QueryForm />} />
                             <Route path="/calendar" element={<Calendar />} />

@@ -215,7 +215,7 @@ function Dashbord() {
                                 ) : (
                                     users.map(user => (
                                         <li key={user._id} className="w-full bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 flex items-center p-4 rounded mb-4 transition duration-300 ease-in-out hover:scale-105">
-                                            <img src={`https://event-managment-56fc.onrender.com${user.profilePicture}`} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
+                                            <img src={`http://localhost:5000${user.profilePicture}`} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
                                             <div>
                                                 <h2 className="text-xl font-semibold">{user.firstName} {user.lastname}</h2>
                                                 <p className="text-sm text-gray-600 font-semibold">{user.email}</p>
