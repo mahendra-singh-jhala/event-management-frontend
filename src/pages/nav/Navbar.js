@@ -39,7 +39,7 @@ const Navbar = () => {
                         <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
                             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
-                                    <Link to="/home" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Home </Link>
+                                    <Link to="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Home </Link>
                                 </li>
                                 <li>
                                     <Link to="/event" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent font-bold"> Event </Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
                 )
             ) : (
                 <div className="flex flex-wrap items-center justify-between p-3 mx-5">
-                    <Link to="/home" className="w-10 flex items-center ms-2">
+                    <Link to="/" className="w-10 flex items-center ms-2">
                         <img src={Image} alt="logo" />
                         <h1 className="text-xl font-bold font-serif text-fuchsia-600">EVENT</h1>
                     </Link>

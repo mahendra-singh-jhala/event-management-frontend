@@ -36,7 +36,6 @@ const EventDetails = () => {
         fetchEvent();
     }, [id]);
 
-
     // Function to format date
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -55,7 +54,7 @@ const EventDetails = () => {
             const res = await api.delete(`/api/events/${id}`)
             if(res.status === 200) {
                 toast.success("successfull to delete")
-                navigate("/dashboard")
+                navigate("/adminDashboard")
             }
         } catch (error) {
             toast.error("Error to deleting event")

@@ -21,7 +21,7 @@ const UpdateEventForm = () => {
         const fetchEvent = async () => {
             try {
                 const res = await api.get(`/api/events/${id}`);
-                setEventData(res.data)
+                setEventData(res.data?.events)
             } catch (error) {
                 toast.error("Error to fetching event");
             }

@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
         if (role === "Admin") {
             navigate("/adminDashboard");
         } else if (role === "User") {
-            navigate("/home");
+            navigate("/");
         } else {
             navigate("/login");
         }

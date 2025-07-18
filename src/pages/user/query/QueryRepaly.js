@@ -11,7 +11,7 @@ function QueryRepaly() {
         const fetchQueries = async () => {
             try {
                 const res = await api.get("/api/query");
-                setQueries(res.data);
+                setQueries(res.data?.query);
             } catch (error) {
                 console.log("Error to fetch queries", error);
             }

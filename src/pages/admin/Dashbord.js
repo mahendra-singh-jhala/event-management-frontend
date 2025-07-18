@@ -20,7 +20,6 @@ function Dashbord() {
     const isEventsPage = location.pathname.includes("event");
     const isMessagePage = location.pathname.includes("getQuery");
     const isCalendarPage = location.pathname.includes("calendar");
-    const isSettingPage = location.pathname.includes("setting");
     const isProfilePage = location.pathname.includes("adminProfile");
     const isTicketPage = location.pathname.includes("tickets");
 
@@ -189,7 +188,7 @@ function Dashbord() {
             </nav>
 
             <main className="flex-grow">
-                {isEventsPage || isCalendarPage || isMessagePage || isProfilePage || isSettingPage || isTicketPage ? (
+                {isEventsPage || isCalendarPage || isMessagePage || isProfilePage || isTicketPage ? (
                     <Outlet />
                 ) : (
                     <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -214,7 +213,7 @@ function Dashbord() {
                                     <p>User not found</p>
                                 ) : (
                                     users.map(user => (
-                                        <li key={user._id} className="w-full bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 flex items-center p-4 rounded mb-4 transition duration-300 ease-in-out hover:scale-105">
+                                        <li key={user._id} className="w-full bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 flex items-center rounded mb-4 transition duration-300 ease-in-out hover:scale-105">
                                             <img src={`http://localhost:5000${user.profilePicture}`} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
                                             <div>
                                                 <h2 className="text-xl font-semibold">{user.firstName} {user.lastname}</h2>
@@ -225,7 +224,6 @@ function Dashbord() {
                                 )}
                             </ul>
                         </div>
-
                         <div className="bg-white max-h-screen overflow-y-auto p-6 rounded-lg shadow-md">
                             <h2 className="text-lg font-semibold mb-4">UPCOMING EVENTS</h2>
                             <ul>
@@ -236,7 +234,7 @@ function Dashbord() {
                                         <Link key={event._id} to={`/event/${event._id}`}>
                                             <li className="bg-sky-400 bg-opacity-40 mb-2 rounded p-4 transform transition duration-300 ease-in-out hover:bg-sky-500 hover:scale-105">
                                                 <div className="flex items-center space-x-4">
-                                                    <img src={`https://event-managment-56fc.onrender.com${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
+                                                    <img src={`http://localhost:5000${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
                                                     <div className="text-xs">
                                                         <p className="font-semibold">{event.title}</p>
                                                         <p className="text-gray-600"><strong>Location: </strong>{event.location}</p>
@@ -306,7 +304,7 @@ function Dashbord() {
                                     <li key={event._id}>
                                         <div className="flex items-center justify-between bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 rounded mb-3">
                                             <div className="flex items-center space-x-4">
-                                                <img src={`https://event-managment-56fc.onrender.com${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
+                                                <img src={`http://localhost:5000${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
                                                 <div className="text-xs">
                                                     <p className="font-semibold">{event.title}</p>
                                                     <p className="text-gray-600"><strong>Location: </strong>{event.location}</p>
