@@ -48,7 +48,7 @@ const PaymentPage = () => {
             });
 
             const options = {
-                key: process.env.ROZ_KEY_Id,
+                key: "rzp_test_S0W42um5OfHUxz",
                 amount: data.amount,
                 currency: data.currency,
                 name: 'Event Ticket',
