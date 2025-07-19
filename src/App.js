@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast";
-import { Navigate } from "react-router-dom";
 import EventForm from "./components/Event/EventForm";
 import EventList from "./components/Event/EventList";
 import TicketForm from "./components/Tickets/TicketForm";
