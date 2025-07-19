@@ -41,7 +41,7 @@ function AdminProfile() {
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                         <img 
-                            src={`http://localhost:5000${user.profilePicture}`} 
+                            src={`https://event-managment-56fc.onrender.com${user.profilePicture}`} 
                             alt="Profile" 
                             className="w-24 h-24 rounded-full mr-4" 
                         />

@@ -3,7 +3,6 @@ import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../asset/logo.png'
-import toast from 'react-hot-toast';
 
 const Navbar = () => {
     const { auth, logout } = useAuth()

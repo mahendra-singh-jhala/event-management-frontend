@@ -34,7 +34,7 @@ const PaymentPage = () => {
     const handlePayment = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.post('http://localhost:5000/api/payments/payment', {
+            const { data } = await axios.post('https://event-managment-56fc.onrender.com/api/payments/payment', {
                 amount: totalPrice * 100,
                 currency: 'INR',
                 price,
@@ -56,7 +56,7 @@ const PaymentPage = () => {
                 order_id: data.id,
                 handler: async (response) => {
                     // Verify the payment
-                    const verifyResponse = await axios.post('http://localhost:5000/api/payments/paymentVerify', {
+                    const verifyResponse = await axios.post('https://event-managment-56fc.onrender.com/api/payments/paymentVerify', {
                         paymentId: response.razorpay_payment_id,
                         orderId: data.id,
                         ticketType,

@@ -214,7 +214,7 @@ function Dashbord() {
                                 ) : (
                                     users.map(user => (
                                         <li key={user._id} className="w-full bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 flex items-center rounded mb-4 transition duration-300 ease-in-out hover:scale-105">
-                                            <img src={`http://localhost:5000${user.profilePicture}`} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
+                                            <img src={`https://event-managment-56fc.onrender.com${user.profilePicture}`} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
                                             <div>
                                                 <h2 className="text-xl font-semibold">{user.firstName} {user.lastname}</h2>
                                                 <p className="text-sm text-gray-600 font-semibold">{user.email}</p>
@@ -234,7 +234,7 @@ function Dashbord() {
                                         <Link key={event._id} to={`/event/${event._id}`}>
                                             <li className="bg-sky-400 bg-opacity-40 mb-2 rounded p-4 transform transition duration-300 ease-in-out hover:bg-sky-500 hover:scale-105">
                                                 <div className="flex items-center space-x-4">
-                                                    <img src={`http://localhost:5000${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
+                                                    <img src={`https://event-managment-56fc.onrender.com${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
                                                     <div className="text-xs">
                                                         <p className="font-semibold">{event.title}</p>
                                                         <p className="text-gray-600"><strong>Location: </strong>{event.location}</p>
@@ -304,7 +304,7 @@ function Dashbord() {
                                     <li key={event._id}>
                                         <div className="flex items-center justify-between bg-orange-500 p-3 bg-opacity-50 hover:bg-orange-400 rounded mb-3">
                                             <div className="flex items-center space-x-4">
-                                                <img src={`http://localhost:5000${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
+                                                <img src={`https://event-managment-56fc.onrender.com${event.images}`} alt="EventImage" className="rounded-full w-10 h-10" />
                                                 <div className="text-xs">
                                                     <p className="font-semibold">{event.title}</p>
                                                     <p className="text-gray-600"><strong>Location: </strong>{event.location}</p>
